@@ -24,10 +24,12 @@ def get_user_id(access_token= access_token, target_user= target_user):
             return user_id
 
 if __name__ == '__main__':
-    user_id = get_user_id
-    if user_id != config["Telegram"].get("TARGET_USER_ID"):
+    # add telegram id into config if it is not existing
+    if config["Telegram"].get("TARGET_USER_ID", None) != None:
+        print ("Telegram ID is already exit")
+    else:
         user_id = get_user_id()
         config.set('Telegram','TARGET_USER_ID', str(user_id))
         with open(config_path, 'w') as newini:
             config.write(newini)
-    print ("Successfully add Telegram ID")
+        print ("Successfully add Telegram ID")

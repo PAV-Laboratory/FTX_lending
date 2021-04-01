@@ -1,5 +1,6 @@
 FROM continuumio/miniconda3
 
+#Set Home as work directory
 WORKDIR /home
 
 # Install cron for scheduling
@@ -11,9 +12,15 @@ COPY main-cron /etc/cron.d/main-cron
 # Give execution rights on the cron job
 RUN chmod 0644 /etc/cron.d/main-cron
 
+# Copy all the file into home
 COPY . .
+
+# Install all the necessary python library
 RUN conda env update --name base --file environment.yml
+
+# Show the config.ini
 RUN tail config.ini
+
 # Apply cron job
 RUN crontab /etc/cron.d/main-cron
 

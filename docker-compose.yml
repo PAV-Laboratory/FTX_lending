@@ -1,29 +1,13 @@
 version: "3.9"
 services:
     ftx_lending:
-        #image: continuumio/miniconda3
         build: ./
         volumes:
-            #- FTX_conda:/opt/conda/lib/python3.8/site-packages
             - .:/home
-            # - ./database/init-db:/docker-entrypoint-initdb.d
-            #- ./database/data-db:/data/db
         ports:
             - "27017:27017"
-              #depends_on:
-              #- requirements
         command: bash -c "
                         python telegram_bot/add_id.py &&
                         python main.py &&
                         cron -f"
         tty: true
-#    requirements:
-#        image: continuumio/miniconda3
-#        volumes:
-#            - ./pip37:/opt/conda/envs/FTX_lending/lib/python3.8/site-packages
-#            - .:/home
-#        command: conda env create -f /home/environment.yml
-
-volumes:
-    FTX_conda: 
-        external: true

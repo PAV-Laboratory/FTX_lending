@@ -31,11 +31,13 @@ In this project, we will dockerize all the necessary dependencies. Therefore, he
    * `sudo chmod +x /usr/local/bin/docker-compose`
 
 3. Clone the repo and get into the repo
+
    * `git clone git@github.com:cfcdavidchan/FTX_lending.git`
    * `cd FTX_lending`
 
 4. Create the config file
-   * cp ./config.ini.sample ./config.ini
+
+* cp ./config.ini.sample ./config.ini
    * Input all the input and the belows steps will show how to obtain all the necessary API key or explain what the config means.
 
 5. FTX config
@@ -47,6 +49,9 @@ In this project, we will dockerize all the necessary dependencies. Therefore, he
    * The target coins the you are willing to update
    * e.g. `coins = USD,BTC` remember that there is only comma without space between
 
+   coins_hold
+   * The amount of a currecy that you want to hold on hand and not lend it out.
+   * e.g. `USD,0;BTC,100` means you want to lend out all the USD and you want to hold 100 units BTC on hand.
 6. Telegram config
    
    Add BotFather in telegram
@@ -69,5 +74,5 @@ In this project, we will dockerize all the necessary dependencies. Therefore, he
 
 7. Running the container
 
-
-- `./docker-compose up --build`
+   Execute the application
+   * `./docker-compose up --build`
