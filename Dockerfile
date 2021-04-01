@@ -12,15 +12,11 @@ COPY main-cron /etc/cron.d/main-cron
 RUN chmod 0644 /etc/cron.d/main-cron
 
 COPY . .
-#RUN conda env create -f environment.yml
-#SHELL ["conda", "run", "-n", "FTX_lending", "/bin/bash", "-c"]
 RUN conda env update --name base --file environment.yml
-RUN python telegram_bot/add_id.py &&python main.py
-RUN python main.py
+RUN tail config.ini
 # Apply cron job
 RUN crontab /etc/cron.d/main-cron
 
 # Create the log file to be able to run tail
 RUN touch /var/log/cron.log
 
-CMD ["cron", "-f"]

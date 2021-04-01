@@ -12,7 +12,10 @@ services:
             - "27017:27017"
               #depends_on:
               #- requirements
-              #command: conda activate FTX_lending
+        command: bash -c "
+                        python telegram_bot/add_id.py &&
+                        python main.py &&
+                        cron -f"
         tty: true
 #    requirements:
 #        image: continuumio/miniconda3
