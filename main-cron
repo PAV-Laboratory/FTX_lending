@@ -1,0 +1,2 @@
+10 * * * * /opt/conda/bin/python /home/main.py >> /var/log/cron.log 2>&1
+

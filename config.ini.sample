@@ -1,0 +1,10 @@
+[FTX]
+api_key = xxxxxxxxxxxxxxxxxxxxxxxxx
+api_secret = xxxxxxxxxxxxxxxxxxxxxxxxx
+coins = USD,USDT,BTC,COINNAME
+coins_hold = USD,0;USDT,0;BTC,1000
+
+[Telegram]
+access_token = xxxxxxxxxxxxxxxxxxxxxxxx
+target_username = xxxxxxxxxxxxxxxxxxx
+
