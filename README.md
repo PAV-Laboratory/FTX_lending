@@ -32,12 +32,12 @@ In this project, we will dockerize all the necessary dependencies. Therefore, he
 
 3. Clone the repo and get into the repo
 
-   * `git clone git@github.com:cfcdavidchan/FTX_lending.git`
+   * `git clone https://github.com/cfcdavidchan/FTX_lending.git`
    * `cd FTX_lending`
 
 4. Create the config file
 
-* cp ./config.ini.sample ./config.ini
+   * cp ./config.ini.sample ./config.ini
    * Input all the input and the belows steps will show how to obtain all the necessary API key or explain what the config means.
 
 5. FTX config
