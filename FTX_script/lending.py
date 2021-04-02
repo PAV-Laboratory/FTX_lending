@@ -92,7 +92,7 @@ def lending_info_by_time(API_KEY="", API_SECRET="", coins_list=[], start_time= 0
          for rate in all_rate:
              compound_rate = compound_rate * rate
          compound_rate = (compound_rate - 1) *100
-         msg += "compound rate: {:.8f}\n".format(compound_rate)
+         msg += "compound rate: {:.8f}%\n".format(compound_rate)
  
      return msg              
 
