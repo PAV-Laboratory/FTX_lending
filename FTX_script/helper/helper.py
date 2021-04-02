@@ -51,4 +51,14 @@ def post_lending_offer(pair="", size=0.00, rate=0.00, API_KEY="", API_SECRET="")
 def get_lending_history(API_KEY="", API_SECRET=""):
     endpoint = "/spot_margin/lending_history"
     response = make_request(method= "GET", endpoint= endpoint, API_KEY=API_KEY, API_SECRET=API_SECRET)
+    print (response)
     return response['result']
+
+def get_lending_history_by_time(API_KEY="", API_SECRET="",start_time=0, end_time=0):
+    endpoint = "/spot_margin/lending_history"
+    params = {
+            "start_time": start_time,
+            "end_time": end_time
+            }
+    response = make_request(method= "GET", endpoint= endpoint, API_KEY=API_KEY, API_SECRET=API_SECRET, params=params)
+    return response['result']         
