@@ -75,4 +75,7 @@ In this project, we will dockerize all the necessary dependencies. Therefore, he
 7. Running the container
 
    Execute the application
-   * `./docker-compose up --build`
+   * `docker-compose up --build`
+
+8. Checking whether the container is runing
+   * `docker ps`
