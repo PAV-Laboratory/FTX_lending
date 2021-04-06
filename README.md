@@ -17,7 +17,7 @@ In this project, we will dockerize all the necessary dependencies. Therefore, he
    
    Grant Permission:
    * `sudo usermod -aG docker <username>`
-   * example for AWS ubuntu default user `sudo usermod -aG docker ubunut`
+   * example for AWS ubuntu default user `sudo usermod -aG docker ubuntu`
    <br/>
 2. [Docker Compose](https://docs.docker.com/compose/install/)
 
