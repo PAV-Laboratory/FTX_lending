@@ -95,7 +95,7 @@ def lending_info_by_time(API_KEY="", API_SECRET="", coins_list=[], start_time= 0
          average_rate = (sum(all_rate)-len(all_rate))/len(all_rate) * 100
          msg += "compound rate: {:.5f}%\n".format(compound_rate)
          msg += "Average rate: {:.5}%\n".format(average_rate)
-         msg += "Expected compound rate(monthly): {:.5f}\n".format((((average_rate/100)+1)**(24*30)-1)*100)
+         msg += "Expected compound rate(monthly): {:.5f}%\n".format((((average_rate/100)+1)**(24*30)-1)*100)
 
 
  
