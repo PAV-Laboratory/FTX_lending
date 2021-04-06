@@ -44,7 +44,7 @@ def lending_info(API_KEY="", API_SECRET="", coins_list=[]):
         last_rate = last_info['rate']
         last_size = last_info['size']
         last_proceeds = last_info["proceeds"]
-        msg += "last size: {}\tlast rate: {:.8f}%\tlast proceeds:{}\n".format(last_size, last_rate*100, last_proceeds)
+        msg += "last size: {}\tlast rate: {:.5f}%\tlast proceeds:{}\n".format(last_size, last_rate*100, last_proceeds)
         
         #msg for all info
         all_rate= []
@@ -54,7 +54,7 @@ def lending_info(API_KEY="", API_SECRET="", coins_list=[]):
         for rate in all_rate:
             compound_rate = compound_rate * rate
         compound_rate = (compound_rate - 1) *100
-        msg += "compound rate: {:.8f}\n".format(compound_rate)
+        msg += "compound rate: {:.5f}\n".format(compound_rate)
 
     return msg
 
@@ -82,7 +82,7 @@ def lending_info_by_time(API_KEY="", API_SECRET="", coins_list=[], start_time= 0
          last_rate = last_info['rate']
          last_size = last_info['size']
          last_proceeds = last_info["proceeds"]
-         msg += "last size: {}\tlast rate: {:.8f}%\tlast proceeds:{}\n".format(last_size, last_rate*100, last_proceeds)
+         msg += "last size: {}\tlast rate(hourly): {:.5f}%\tlast rate(annual):{:.5f}%\tlast proceeds:{}\n".format(last_size, last_rate*100, last_rate*24*365*100, last_proceeds)
              
          #msg for all info
          all_rate= []
@@ -92,7 +92,12 @@ def lending_info_by_time(API_KEY="", API_SECRET="", coins_list=[], start_time= 0
          for rate in all_rate:
              compound_rate = compound_rate * rate
          compound_rate = (compound_rate - 1) *100
-         msg += "compound rate: {:.8f}%\n".format(compound_rate)
+         average_rate = (sum(all_rate)-len(all_rate))/len(all_rate) * 100
+         msg += "compound rate: {:.5f}%\n".format(compound_rate)
+         msg += "Average rate: {:.5}%\n".format(average_rate)
+         msg += "Expected compound rate(monthly): {:.5f}\n".format((((average_rate/100)+1)**(24*30)-1)*100)
+
+
  
      return msg              
 
