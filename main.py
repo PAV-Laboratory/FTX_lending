@@ -29,13 +29,13 @@ if __name__ == '__main__':
     try:
         msg+= update_lending(API_KEY=API_KEY, API_SECRET=API_SECRET, coins_list=coins_list, coins_hold= coins_hold, sub_account= sub_account)
     
-    except exception as e:
+    except Exception as e:
         print (e)
         pass
 
     try:
         msg+= lending_info_by_time(API_KEY=API_KEY, API_SECRET=API_SECRET, coins_list=coins_list, start_time=0, end_time= currect_timestamp, sub_account= sub_account)
-    except exception as e:
+    except Exception as e:
         print (e)
         pass
     print (msg)

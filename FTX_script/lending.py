@@ -18,6 +18,7 @@ def update_lending(API_KEY="", API_SECRET="", coins_list=[], coins_hold={}, sub_
             if response == "success":
                 msg += "Update {} lending amount to {}\n".format(coin, total_coin)
             else:
+                print (response)
                 msg += "Fail to lend {}".format(coin)
     return msg
 
