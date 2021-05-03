@@ -28,7 +28,10 @@ if __name__ == '__main__':
     msg += ""
     try:
         msg+= update_lending(API_KEY=API_KEY, API_SECRET=API_SECRET, coins_list=coins_list, coins_hold= coins_hold)
+    
+    except:
         pass
+
     try:
         msg+= lending_info_by_time(API_KEY=API_KEY, API_SECRET=API_SECRET, coins_list=coins_list, start_time=0, end_time= currect_timestamp)
     except:
