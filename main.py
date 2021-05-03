@@ -25,7 +25,7 @@ target_user_id = config["Telegram"]["target_user_id"]
 if __name__ == '__main__':
     now = datetime.now()
     currect_timestamp = datetime.timestamp(now)
-    msg += ""
+    msg = ""
     try:
         msg+= update_lending(API_KEY=API_KEY, API_SECRET=API_SECRET, coins_list=coins_list, coins_hold= coins_hold)
     
