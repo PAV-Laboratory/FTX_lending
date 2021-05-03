@@ -17,6 +17,8 @@ def update_lending(API_KEY="", API_SECRET="", coins_list=[], coins_hold={}, sub_
             response = helper.post_lending_offer(pair= coin, size= total_coin, rate= lowest_rate, API_KEY= API_KEY, API_SECRET=API_SECRET, sub_account= sub_account)
             if response == "success":
                 msg += "Update {} lending amount to {}\n".format(coin, total_coin)
+            else:
+                msg += "Fail to lend {}".format(coin)
     return msg
 
 def lending_info(API_KEY="", API_SECRET="", coins_list=[], sub_account= None):
