@@ -4,7 +4,7 @@ import telegram
 def send_message(text="", access_token="", target_user_id=""):
     #access_token = config["Telegram"]["ACCESS_TOKEN"]
     bot = telegram.Bot(token=access_token)
-    bot.send_message(chat_id= target_user_id, text= text)
+    bot.send_message(chat_id= target_user_id, text= text, parse_mode=telegram.ParseMode.MARKDOWN)
 
 if __name__ == '__main__':
     import os, configparser
