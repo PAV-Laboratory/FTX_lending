@@ -16,6 +16,8 @@ API_KEY= config["FTX"]["API_KEY"]
 API_SECRET= config["FTX"]["API_SECRET"]
 coins_list = config["FTX"]["coins"].split(',')
 coins_hold = {coin_detail.split(",")[0]: float(coin_detail.split(",")[1]) for coin_detail in config["FTX"]["coins_hold"].split(';')}
+sub_account= config["FTX"]["sub_account"]
+
 access_token = config["Telegram"]["ACCESS_TOKEN"]
 target_user_id = config["Telegram"]["target_user_id"]
 
@@ -23,8 +25,14 @@ target_user_id = config["Telegram"]["target_user_id"]
 if __name__ == '__main__':
     now = datetime.now()
     currect_timestamp = datetime.timestamp(now)
-
-    msg = update_lending(API_KEY=API_KEY, API_SECRET=API_SECRET, coins_list=coins_list, coins_hold= coins_hold) + lending_info_by_time(API_KEY=API_KEY, API_SECRET=API_SECRET, coins_list=coins_list, start_time=0, end_time= currect_timestamp)
+    msg += ""
+    try:
+        msg+= update_lending(API_KEY=API_KEY, API_SECRET=API_SECRET, coins_list=coins_list, coins_hold= coins_hold)
+        pass
+    try:
+        msg+= lending_info_by_time(API_KEY=API_KEY, API_SECRET=API_SECRET, coins_list=coins_list, start_time=0, end_time= currect_timestamp)
+    except:
+        pass
     print (msg)
     send_message(text= msg, access_token=access_token, target_user_id=target_user_id)
     # Obatin the current time for logging

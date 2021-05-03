@@ -3,9 +3,9 @@ import configparser
 
 lowest_rate = 0.000001
 
-def update_lending(API_KEY="", API_SECRET="", coins_list=[], coins_hold={}):
+def update_lending(API_KEY="", API_SECRET="", coins_list=[], coins_hold={}, sub_account=None):
     msg = ""
-    all_balance = helper.get_balance(API_KEY= API_KEY, API_SECRET= API_SECRET)
+    all_balance = helper.get_balance(API_KEY= API_KEY, API_SECRET= API_SECRET, sub_account= sub_account)
     for balance in all_balance:
         coin = balance["coin"]
         if coin not in coins_list:
@@ -14,13 +14,13 @@ def update_lending(API_KEY="", API_SECRET="", coins_list=[], coins_hold={}):
             total_coin = balance["total"]
             # mins the holding
             total_coin = total_coin - coins_hold.get(coin, 0)
-            response = helper.post_lending_offer(pair= coin, size= total_coin, rate= lowest_rate, API_KEY= API_KEY, API_SECRET=API_SECRET)
+            response = helper.post_lending_offer(pair= coin, size= total_coin, rate= lowest_rate, API_KEY= API_KEY, API_SECRET=API_SECRET, sub_account= sub_account)
             if response == "success":
                 msg += "Update {} lending amount to {}\n".format(coin, total_coin)
     return msg
 
-def lending_info(API_KEY="", API_SECRET="", coins_list=[]):
-    response = helper.get_lending_history(API_KEY= API_KEY, API_SECRET= API_SECRET)
+def lending_info(API_KEY="", API_SECRET="", coins_list=[], sub_account= None):
+    response = helper.get_lending_history(API_KEY= API_KEY, API_SECRET= API_SECRET, sub_account= sub_account)
     
     # create a dict for all coin
     coin_history = dict()
@@ -58,8 +58,8 @@ def lending_info(API_KEY="", API_SECRET="", coins_list=[]):
 
     return msg
 
-def lending_info_by_time(API_KEY="", API_SECRET="", coins_list=[], start_time= 0, end_time= 0): 
-     response = helper.get_lending_history_by_time(API_KEY= API_KEY, API_SECRET= API_SECRET, start_time= start_time, end_time= end_time)
+def lending_info_by_time(API_KEY="", API_SECRET="", coins_list=[], start_time= 0, end_time= 0, sub_account= None): 
+     response = helper.get_lending_history_by_time(API_KEY= API_KEY, API_SECRET= API_SECRET, start_time= start_time, end_time= end_time, sub_account= sub_account)
          
      # create a dict for all coin
      coin_history = dict()
